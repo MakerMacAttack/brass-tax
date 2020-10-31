@@ -6,7 +6,7 @@ Link eventually here.
 
 ## Project Description
 
-This will be a very simple, very granular budgeting tool. It will try to be as comprehensive and specific as possible. There will also be plenty of options to skip chunks or just put your best, broad estimation if you would prefer. For maximum privacy it is suggested the code be downloaded to your private computer or phone and all the information simply stored locally with log-in disabled, however the deploy will authenticate individual users so it can be used remotely.
+This will be a very simple, very granular budgeting tool. It will try to be as comprehensive and specific as possible. There will also be plenty of options to skip chunks or just put your best, broad estimation if you would prefer. For maximum privacy it is suggested the code be downloaded to your private computer or phone and all the information simply stored locally with log-in disabled, however the deploy will authenticate individual users so it can be used remotely. Even remotely I will set it up as multiple users in case more than one person in a household wants to use it, or even if a person has some reason to have separate budgets. On the mobile breakdown, I will make it as easy as possible to add in a quick purchase with a note which will either default to "sundries" or be held to be sorted later.
 
 ## Wireframes
 
