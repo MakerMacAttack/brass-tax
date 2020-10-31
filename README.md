@@ -33,6 +33,7 @@ Do research into if there is an API with individual tax rates for the various st
 
 - Plan savings for specific purchases.
 - More robust debt calculation.
+- Project future for general accounts and specific saving plans
 
 ## What I plan to learn
 
