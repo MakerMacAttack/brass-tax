@@ -31,3 +31,7 @@ Do research into if there is an API with individual tax rates for the various st
 
 - Plan savings for specific purchases.
 - More robust debt calculation.
+
+## What I plan to learn
+
+In order to complete this project, I will learn how to create modals, and also how to make this app something I can download onto my phone and run there. I imagine some sort of icon work might also be involved. I suspect I'll discover that I'll have to do this differently from scratch to actually run it on the phone, like writing it in kotlin rather than JS.
