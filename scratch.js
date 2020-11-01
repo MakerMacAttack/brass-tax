@@ -58,13 +58,14 @@ class Debt {
   }
 
   untilPaidOff(payment, currentBalance = this.balance, i = 1) { // Currently only works in one-month increments
-    console.log(payment, currentBalance, i);
+    // console.log(payment, currentBalance, i);
     if (currentBalance <= payment) {
       return [i, currentBalance]
     }
     let newBalance = currentBalance * ((1 + this.interest) ** (1 / 12))
     newBalance -= payment;
-    return this.untilPaidOff(payment, newBalance, i + 1)
+    // console.log(currentBalance, newBalance, payment);
+    return newBalance > currentBalance ? [-1, newBalance - currentBalance] : this.untilPaidOff(payment, newBalance, i + 1)
     // return currentBalance <= payment ? [i, currentBalance]
     //   : (() => {
     //   let newBalance = currentBalance * ((1 + this.interest) ** (n / 12))
@@ -73,8 +74,8 @@ class Debt {
   }
 }
 
-const fridge = new Debt(100, .01)
+// const fridge = new Debt(100, .75)
 
-let [months, finalPayment] = fridge.untilPaidOff(25)
+// let [months, finalPayment] = fridge.untilPaidOff(4.78)
 
-console.log(`You will pay off the fridge in ${months} payments with a final payment of ${finalPayment}.`);
+// months < 1 ? console.log(`You must increase your payments by more than ${finalPayment} to reduce the principle.`) : console.log(`You will pay off the fridge in ${months} payments with a final payment of ${finalPayment}.`);
