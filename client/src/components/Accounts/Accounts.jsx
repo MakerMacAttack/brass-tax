@@ -34,7 +34,9 @@ export default function Accounts(props) {
     <div>
       <h2>Your total current savings is: {total}</h2>
       <button onClick={handleList}>
-        {listHidden ? "View Accounts" : "Hide Accounts"}
+        <svg height="20" width="20">
+          <path d="M5 0 L15 10 L5 20 Z" />
+        </svg>
       </button>
       <div id={listHidden ? "account-list" : "account-list-show"}>
         {allAccounts.map((account) => (
