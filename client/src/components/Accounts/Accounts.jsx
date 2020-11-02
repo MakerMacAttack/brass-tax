@@ -36,7 +36,7 @@ export default function Accounts(props) {
       <button onClick={handleList}>
         {listHidden ? "View Accounts" : "Hide Accounts"}
       </button>
-      <div id="account-list">
+      <div id={listHidden ? "account-list" : "account-list-show"}>
         {allAccounts.map((account) => (
           <Account key={account._id} account={account} />
         ))}
