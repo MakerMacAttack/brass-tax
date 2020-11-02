@@ -40,7 +40,7 @@ export default function Accounts(props) {
       </button>
       <div id={listHidden ? "account-list" : "account-list-show"}>
         {allAccounts.map((account) => (
-          <Account key={account._id} account={account} />
+          <Account key={account._id} account={account} set={setTrigger} />
         ))}
         <AccountCreate set={setTrigger} />
       </div>
