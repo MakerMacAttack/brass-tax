@@ -25,6 +25,7 @@ export default function AccountCreate(props) {
       balance: 0,
       interest: 0,
     });
+    props.set((prev) => !prev);
   };
 
   return (

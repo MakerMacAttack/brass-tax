@@ -6,6 +6,7 @@ import "./Accounts.css";
 
 export default function Accounts(props) {
   const [allAccounts, setAllAccounts] = useState([]);
+  const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
     const fetchAccounts = async () => {
@@ -13,14 +14,14 @@ export default function Accounts(props) {
       setAllAccounts(accounts);
     };
     fetchAccounts();
-  }, []);
+  }, [trigger]);
 
   return (
     <div>
       {allAccounts.map((account) => (
         <Account key={account._id} account={account} />
       ))}
-      <AccountCreate />
+      <AccountCreate set={setTrigger} />
     </div>
   );
 }
