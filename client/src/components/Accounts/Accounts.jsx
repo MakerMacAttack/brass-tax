@@ -7,6 +7,7 @@ import "./Accounts.css";
 export default function Accounts(props) {
   const [allAccounts, setAllAccounts] = useState([]);
   const [trigger, setTrigger] = useState(true);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const fetchAccounts = async () => {
@@ -16,8 +17,15 @@ export default function Accounts(props) {
     fetchAccounts();
   }, [trigger]);
 
+  useEffect(() => {
+    const balances = allAccounts.map((account) => account.balance);
+    const sum = balances.reduce((acc, curr) => acc + curr);
+    setTotal(sum);
+  }, [allAccounts]);
+
   return (
     <div>
+      <h2>Your total current savings is: {total}</h2>
       {allAccounts.map((account) => (
         <Account key={account._id} account={account} />
       ))}
