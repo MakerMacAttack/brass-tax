@@ -5,6 +5,8 @@ import "./Account.css";
 export default function Account(props) {
   const [buttonHide, setButtonHide] = useState(true);
   const [updateHide, setUpdateHide] = useState(true);
+  const [deposit, setDeposit] = useState(0);
+  const [withdrawl, setWithdrawl] = useState(0);
   const [account, setAccount] = useState({
     label: props.account.label,
     balance: props.account.balance,
@@ -41,6 +43,15 @@ export default function Account(props) {
     props.set((prev) => !prev);
   };
 
+  function handleDeposit(e) {
+    e.preventDefault();
+    setAccount({
+      ...account,
+      balance: account.balance + deposit - withdrawl,
+    });
+    setUpdateHide((prev) => !prev);
+  }
+
   return (
     <div>
       <h3>{label}</h3>
@@ -61,7 +72,6 @@ export default function Account(props) {
               placeholder="Account Nickname"
               value={account.label}
               name="label"
-              required
               autoFocus
               onChange={handleChange}
             />
@@ -70,7 +80,6 @@ export default function Account(props) {
               type="number"
               value={account.balance}
               name="balance"
-              required
               onChange={handleChange}
             />
             <input
@@ -78,8 +87,28 @@ export default function Account(props) {
               type="number"
               value={account.interest}
               name="interest"
-              required
               onChange={handleChange}
+            />
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
+          </form>
+          <form className="deposit-form" onSubmit={handleDeposit}>
+            <label htmlFor="deposit">Deposit</label>
+            <input
+              className="input-deposit"
+              type="number"
+              value={deposit}
+              name="deposit"
+              onChange={(e) => setDeposit(e.target.value)}
+            />
+            <label htmlFor="withdrawl">Withdrawl</label>
+            <input
+              className="input-withdrawl"
+              type="number"
+              value={withdrawl}
+              name="withdrawl"
+              onChange={(e) => setWithdrawl(e.target.value)}
             />
             <button type="submit" className="submit-button">
               Submit
