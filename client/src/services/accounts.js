@@ -44,3 +44,7 @@ export const deleteAccount = async id => {
       throw error
   }
 }
+
+export function compound(account, n, t = 12) { // t = 365 if you want days, 12 if you want months, 1 if you want years
+  return account.balance * ((1 + account.interest) ** (n / t))
+}

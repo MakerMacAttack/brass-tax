@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { deleteAccount, updateAccount } from "../../services/accounts";
+import {
+  deleteAccount,
+  updateAccount,
+  compound,
+} from "../../services/accounts";
 import "./Account.css";
 
 export default function Account(props) {
@@ -7,13 +11,14 @@ export default function Account(props) {
   const [updateHide, setUpdateHide] = useState(true);
   const [deposit, setDeposit] = useState(0);
   const [withdrawl, setWithdrawl] = useState(0);
-  const [account, setAccount] = useState({
-    label: props.account.label,
-    balance: props.account.balance,
-    interest: props.account.interest,
-  });
 
-  const { label, balance, _id } = props.account;
+  const { label, balance, interest, _id } = props.account;
+
+  const [account, setAccount] = useState({
+    label,
+    balance,
+    interest,
+  });
 
   function handleClick() {
     setButtonHide((prev) => !prev);
@@ -43,19 +48,31 @@ export default function Account(props) {
     props.set((prev) => !prev);
   };
 
-  function handleDeposit(e) {
+  async function handleDeposit(e) {
     e.preventDefault();
     setAccount({
       ...account,
-      balance: account.balance + deposit - withdrawl,
+      balance: props.account.balance + deposit - withdrawl,
     });
+    await updateAccount(_id, account);
     setUpdateHide((prev) => !prev);
+    props.set((prev) => !prev);
+  }
+
+  function handleCompound() {
+    setAccount({
+      ...account,
+      balance: compound(props.account, 1),
+    });
+    updateAccount(_id, account);
+    props.set((prev) => !prev);
   }
 
   return (
     <div>
-      <h3>{label}</h3>
-      <h3>{balance}</h3>
+      <h3>{props.account.label}</h3>
+      <h3>{props.account.balance}</h3>
+      <button onClick={handleCompound}>Compound test</button>
       <button onClick={handleClick}>
         <svg height="20" width="20">
           <path d="M5 0 L15 10 L5 20 Z" />
