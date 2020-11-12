@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import AccountCreate from "../Create/Create";
+import Create from "../Create/Create";
 import Account from "../Account/Account";
-import { getAccounts } from "../../services/accounts";
+import { getAccounts } from "../../../services/accounts";
 import "./List.css";
 
 export default function List(props) {
@@ -42,7 +42,7 @@ export default function List(props) {
         {allAccounts.map((account) => (
           <Account key={account._id} account={account} set={setTrigger} />
         ))}
-        <AccountCreate set={setTrigger} />
+        <Create set={setTrigger} />
       </div>
     </div>
   );

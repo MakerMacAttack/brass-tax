@@ -1,42 +1,29 @@
 import React, { useState } from "react";
-import { createAccount } from "../../services/accounts";
-import "./Create.css";
+import { handleChange, updateAccount } from "../../../services/accounts";
+import "./Settings.css";
 
-export default function Create(props) {
+export default function Settings(props) {
   const [account, setAccount] = useState({
-    label: "",
-    balance: 0,
-    interest: 0,
+    label: props.account.label,
+    balance: props.account.balance,
+    interest: props.account.interest,
   });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setAccount({
-      ...account,
-      [name]: value,
-    });
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await createAccount(account);
-    setAccount({
-      label: "",
-      balance: 0,
-      interest: 0,
-    });
+    await updateAccount(props.account._id, account);
+    props.setUpdateHide(true);
     props.set((prev) => !prev);
   };
 
   return (
     <div>
-      <form className="create-form" onSubmit={handleSubmit}>
+      <form className="update-form" onSubmit={handleSubmit}>
         <input
           className="input-label"
           placeholder="Account Nickname"
           value={account.label}
           name="label"
-          required
           autoFocus
           onChange={handleChange}
         />
@@ -45,7 +32,6 @@ export default function Create(props) {
           type="number"
           value={account.balance}
           name="balance"
-          required
           onChange={handleChange}
         />
         <input
@@ -53,7 +39,6 @@ export default function Create(props) {
           type="number"
           value={account.interest}
           name="interest"
-          required
           onChange={handleChange}
         />
         <button type="submit" className="submit-button">

@@ -45,6 +45,14 @@ export const deleteAccount = async id => {
   }
 }
 
+export const handleChange = (event, setState, state) => { // ask Janice how to pass a function, and also if I still get Event as a free element and how that works.
+  const { name, value } = event.target;
+  setState({
+    ...state,
+    [name]: value,
+  });
+};
+
 export function compound(account, n, t = 12) { // t = 365 if you want days, 12 if you want months, 1 if you want years
   return account.balance * ((1 + account.interest) ** (n / t))
 }

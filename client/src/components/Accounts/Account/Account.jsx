@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AccountUpdate from "../Update/Update";
-import { updateAccount, compound } from "../../services/accounts";
+import Update from "../Update/Update";
+import { updateAccount, compound } from "../../../services/accounts";
 import "./Account.css";
 
 export default function Account(props) {
@@ -35,7 +35,7 @@ export default function Account(props) {
         </svg>
       </button>
       <div id={buttonHide ? "acct-bttn-hide" : "acct-bttn"}>
-        <AccountUpdate set={props.set} account={props.account} />
+        <Update set={props.set} account={props.account} />
       </div>
     </div>
   );

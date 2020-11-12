@@ -1,22 +1,42 @@
-import React from "react";
-import "./Settings.css";
+import React, { useState } from "react";
+import { createAccount } from "../../../services/accounts";
+import "./Create.css";
 
-export default function Settings(props) {
+export default function Create(props) {
+  const [account, setAccount] = useState({
+    label: "",
+    balance: 0,
+    interest: 0,
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setAccount({
+      ...account,
+      [name]: value,
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await updateAccount(props.account._id, account);
-    setUpdateHide(true);
+    await createAccount(account);
+    setAccount({
+      label: "",
+      balance: 0,
+      interest: 0,
+    });
     props.set((prev) => !prev);
   };
 
   return (
     <div>
-      <form className="update-form" onSubmit={handleSubmit}>
+      <form className="create-form" onSubmit={handleSubmit}>
         <input
           className="input-label"
           placeholder="Account Nickname"
           value={account.label}
           name="label"
+          required
           autoFocus
           onChange={handleChange}
         />
@@ -25,6 +45,7 @@ export default function Settings(props) {
           type="number"
           value={account.balance}
           name="balance"
+          required
           onChange={handleChange}
         />
         <input
@@ -32,6 +53,7 @@ export default function Settings(props) {
           type="number"
           value={account.interest}
           name="interest"
+          required
           onChange={handleChange}
         />
         <button type="submit" className="submit-button">

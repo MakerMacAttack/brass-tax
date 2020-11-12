@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteAccount, updateAccount } from "../../services/accounts";
+import { deleteAccount, updateAccount } from "../../../services/accounts";
 import "./Update.css";
 
 export default function Update(props) {
