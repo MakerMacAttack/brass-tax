@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import AccountCreate from "../../components/AccountCreate/AccountCreate";
-import Account from "../../components/Account/Account";
+import AccountCreate from "../Create/Create";
+import Account from "../Account/Account";
 import { getAccounts } from "../../services/accounts";
-import "./Accounts.css";
+import "./List.css";
 
-export default function Accounts(props) {
+export default function List(props) {
   const [allAccounts, setAllAccounts] = useState([]);
   const [trigger, setTrigger] = useState(true);
   const [total, setTotal] = useState(0);
