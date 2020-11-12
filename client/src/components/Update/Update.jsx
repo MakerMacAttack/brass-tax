@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { deleteAccount, updateAccount } from "../../services/accounts";
-import "./AccountUpdate.css";
+import "./Update.css";
 
-export default function AccountUpdate(props) {
+export default function Update(props) {
   const [deposit, setDeposit] = useState(0);
   const [withdrawl, setWithdrawl] = useState(0);
   const [updateHide, setUpdateHide] = useState(true);
@@ -29,13 +29,6 @@ export default function AccountUpdate(props) {
     props.set((prev) => !prev);
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    await updateAccount(props.account._id, account);
-    setUpdateHide(true);
-    props.set((prev) => !prev);
-  };
-
   async function handleDeposit(e) {
     e.preventDefault();
     setAccount({
@@ -49,33 +42,6 @@ export default function AccountUpdate(props) {
 
   return (
     <div>
-      <form className="update-form" onSubmit={handleSubmit}>
-        <input
-          className="input-label"
-          placeholder="Account Nickname"
-          value={account.label}
-          name="label"
-          autoFocus
-          onChange={handleChange}
-        />
-        <input
-          className="input-balance"
-          type="number"
-          value={account.balance}
-          name="balance"
-          onChange={handleChange}
-        />
-        <input
-          className="input-interest"
-          type="number"
-          value={account.interest}
-          name="interest"
-          onChange={handleChange}
-        />
-        <button type="submit" className="submit-button">
-          Submit
-        </button>
-      </form>
       <button onClick={handleUpdateHide}>
         {updateHide ? "Update" : "Hide"}
       </button>

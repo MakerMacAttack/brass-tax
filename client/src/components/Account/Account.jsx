@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AccountUpdate from "../AccountUpdate/AccountUpdate";
+import AccountUpdate from "../Update/Update";
 import { updateAccount, compound } from "../../services/accounts";
 import "./Account.css";
 

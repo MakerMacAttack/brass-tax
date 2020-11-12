@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { createAccount } from "../../services/accounts";
-import "./AccountCreate.css";
+import "./Create.css";
 
-export default function AccountCreate(props) {
+export default function Create(props) {
   const [account, setAccount] = useState({
     label: "",
     balance: 0,
